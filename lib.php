@@ -165,7 +165,7 @@ function block_grade_me_tree($course) {
 
         $text .= '<dd id="cmid' . $coursemoduleid . '" class="module">' . "\n";  // Open module.
         $text .= '<div class="dd-wrap">' . "\n";
-        $text .= '<div tabindex=0 class="toggle fa fa-caret-right" aria-hidden="true"
+        $text .= '<div tabindex=0 class="toggle fa fa-caret-right open" aria-hidden="true"
                     onclick="$(\'dd#cmid' . $coursemoduleid . ' > div div.toggle\')
                     .toggleClass(\'open\');$(\'dd#cmid' . $coursemoduleid . ' > ul\')
                     .toggleClass(\'block_grade_me_hide\');">
