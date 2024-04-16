@@ -176,7 +176,7 @@ function block_grade_me_tree($course) {
         $text .= '<a href="' . $modulelink . '" class="grademe-mod-name" title="' . $moduletitle . '">' . $itemname . '</a>' . "\n";
         $text .= '<span class="badge badge-pill badge-primary">' . count($item) . '</span>' . "\n";
         $text .= '</div>' . "\n";
-        $text .= '<ul class="gradable-list block_grade_me_hide">' . "\n";
+        $text .= '<ul class="gradable-list ">' . "\n";
 
         ksort($item);
 
