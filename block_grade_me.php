@@ -159,7 +159,7 @@ class block_grade_me extends block_base {
              $expand = '<button class="btn btn-sm btn-outline-secondary" type="button" onclick="togglecollapseall();">' .
                 get_string('expand', 'block_grade_me') . '</button>';
 
-            $this->content->text = $expand . '<dl>' . $this->content->text . '</dl><div class="excess">' . $additional . '</div>';
+            $this->content->text = $expand . '<dl class="expanded">' . $this->content->text . '</dl><div class="excess">' . $additional . '</div>';
         } else if (empty($this->content->text) && $showempty) {
             $this->content->text .= '<div class="excess">' . get_string('nothing', 'block_grade_me') . '</div>' . "\n";
         }
