@@ -114,6 +114,9 @@ function block_grade_me_tree($course) {
 
     // Get time format string.
     $datetimestring = get_string('datetime', 'block_grade_me', array());
+    if (true) {
+        $datetimestring = get_string('strftimedaydatetime', 'langconfig');
+    }
     // Grading image.
     $gradeimg = $CFG->wwwroot . '/blocks/grade_me/pix/check_mark.png';
     // Define text variable.
