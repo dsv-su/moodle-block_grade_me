@@ -222,8 +222,7 @@ function block_grade_me_tree($course) {
                         <span class="sr-only">' . $submissiontitle . '</span>
                       </a>';
             $text .= '<div class="gradable-wrap">';
-            $text .= '<a class="gradable-user" href="' . $CFG->wwwroot . '/user/view.php?id=' . $userid
-                     . '&amp;course=' . $courseid . '" title="' . $userprofiletitle . '">';
+            $text .= '<a class="gradable-user" href="' .$submissionlink                      . '&amp;course=' . $courseid . '" ">';
             $text .= $userfirstlast;
             $text .= '</a>';
             $text .= '<div class="gradable-date">' . userdate($timesubmitted, $datetimestring) . '</div>';
