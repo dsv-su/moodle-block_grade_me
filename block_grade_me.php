@@ -66,12 +66,12 @@ class block_grade_me extends block_base {
         $maxcourses = (isset($CFG->block_grade_me_maxcourses)) ? $CFG->block_grade_me_maxcourses : 10;
         $coursecount = 0;
         $additional = null;
-
+        $sort = 'c.sortorder DESC';
         if ($COURSE->id == SITEID) {
             if (is_siteadmin() && $CFG->block_grade_me_enableadminviewall) {
-                $courses = get_courses();
+                $courses = get_courses("all", $sort);
             } else {
-                $courses = enrol_get_my_courses();
+                $courses = enrol_get_my_courses(null, $sort);
             }
         } else {
             $courses[$COURSE->id] = $COURSE;
