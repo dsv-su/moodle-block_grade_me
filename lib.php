@@ -179,17 +179,6 @@ function block_grade_me_tree($course) {
         $text .= '<ul class="gradable-list ">' . "\n";
 
         ksort($item);
-        function get_assignment_url($moduleid, $userid){
-            $urlparams = array(
-                'id' => $moduleid,
-                'rownum' => 0,
-                'action' => 'grader',
-            );
-            $urlparams['userid'] = $userid;
-
-            $url = new moodle_url('/mod/assign/view.php', $urlparams);
-            return  $url->out();;
-        };
         foreach ($item as $l3 => $submission) {
             $timesubmitted = $l3;
             $userid = $submission['meta']['userid'];
@@ -200,7 +189,14 @@ function block_grade_me_tree($course) {
                 $submissionlink .= '/mod/assignment/submissions.php?id=' . $coursemoduleid . '&amp;userid=' . $userid .
                     '&amp;mode=single&amp;filter=0&amp;offset=0';
             } else if ($itemmodule == 'assign') {
-                    $submissionlink = get_assignment_url($coursemoduleid, $userid);
+                $urlparams = array(
+                   'id' => $coursemoduleid,
+                  'rownum' => 0,
+                  'action' => 'grader',
+                );
+                $urlparams['userid'] = $userid;
+                $url = new moodle_url('/mod/assign/view.php', $urlparams);
+                $submissionlink =  $url->out();;
             } else if ($itemmodule == 'data') {
                 $submissionlink .= '/mod/data/view.php?rid=' . $submissionid . '&amp;mode=single';
             } else if ($itemmodule == 'forum') {
