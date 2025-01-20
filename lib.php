@@ -177,17 +177,6 @@ function block_grade_me_tree($course) {
         $text .= '<ul class="gradable-list ">' . "\n";
 
         ksort($item);
-        function get_assignment_url($moduleid, $userid){
-            $urlparams = array(
-                'id' => $moduleid,
-                'rownum' => 0,
-                'action' => 'grader',
-            );
-            $urlparams['userid'] = $userid;
-
-            $url = new moodle_url('/mod/assign/view.php', $urlparams);
-            return  $url->out();;
-        };
         foreach ($item as $l3 => $submission) {
             $timesubmitted = $l3;
             $userid = $submission['meta']['userid'];
