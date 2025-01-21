@@ -153,8 +153,8 @@ function block_grade_me_tree($course) {
 
         $modulelink = $CFG->wwwroot . '/mod/' . $itemmodule . '/view.php?id=' . $coursemoduleid;
         $gradelink = $CFG->wwwroot;
-        if ($itemmodule == 'assignment') {
-            $gradelink .= '/mod/assignment/submissions.php?id=' . $coursemoduleid;
+        if ($itemmodule == 'assign') {
+            $gradelink .= '/mod/assign/view.php?id=' . $coursemoduleid . '&action=grading';
         } else if ($itemmodule == 'quiz') {
             $gradelink .= '/mod/quiz/report.php?id=' . $coursemoduleid;
         } else {
@@ -171,9 +171,7 @@ function block_grade_me_tree($course) {
                     .toggleClass(\'block_grade_me_hide\');">
                         <span class="sr-only">Toggle Section</span>
                     </div>' . "\n";
-        $text .= '<a href="' . $gradelink . '" class="grademe-course-icon" title="'
-                 . $moduletitle . '">' . $moduleicon . '</a>' . "\n";
-        $text .= '<a href="' . $modulelink . '" class="grademe-mod-name" title="' . $moduletitle . '">' . $itemname . '</a>' . "\n";
+        $text .= '<a href="' . $gradelink . '" class="grademe-mod-name" title="' . $moduletitle . '">' . $itemname . '</a>' . "\n";
         $text .= '<span class="badge badge-pill badge-primary">' . count($item) . '</span>' . "\n";
         $text .= '</div>' . "\n";
         $text .= '<ul class="gradable-list ">' . "\n";
