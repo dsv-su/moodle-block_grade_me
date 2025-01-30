@@ -76,7 +76,7 @@ class block_grade_me extends block_base {
         } else {
             $courses[$COURSE->id] = $COURSE;
         }
-
+        $coursedata = [];
         foreach ($courses as $courseid => $course) {
             unset($params);
             $gradeables = array();
@@ -98,7 +98,7 @@ class block_grade_me extends block_base {
             }
 
             $params['courseid'] = $courseid;
-
+         
             foreach ($enabledplugins as $plugin => $a) {
                 if (has_capability($a['capability'], $context)) {
                     $fn = 'block_grade_me_query_' . $plugin;
@@ -136,6 +136,8 @@ class block_grade_me extends block_base {
                 } else {
                     ksort($gradeables);
                     $this->content->text .= block_grade_me_tree($gradeables);
+                    $coursedata[]    = block_grade_me_tree_json($gradeables);
+
                 }
             }
             unset($gradeables);
@@ -154,16 +156,10 @@ class block_grade_me extends block_base {
             }
         }
 
-        if (!empty($this->content->text)) {
-             // Expand/Collapse button.
-             $expand = '<button class="btn btn-sm btn-outline-secondary" type="button" onclick="togglecollapseall();">' .
-                get_string('expand', 'block_grade_me') . '</button>';
-
-            $this->content->text = $expand . '<dl class="expanded">' . $this->content->text . '</dl><div class="excess">' . $additional . '</div>';
-        } else if (empty($this->content->text) && $showempty) {
-            $this->content->text .= '<div class="excess">' . get_string('nothing', 'block_grade_me') . '</div>' . "\n";
-        }
-
+        print_r($coursedata);
+        $json = json_encode($coursedata);
+        $html = '<script id="data" type="application/json">'.$json.'</script>';
+        $this->content->text = $html;
         return $this->content;
     }
 

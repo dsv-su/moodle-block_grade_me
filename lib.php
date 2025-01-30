@@ -103,6 +103,15 @@ function block_grade_me_array($gradeables, $r) {
     }
     return($gradeables);
 }
+function block_grade_me_tree_json($course) {
+    $courseid = $course['meta']['courseid'];
+    $coursename = $course['meta']['coursename'];
+    $item = new \stdClass;
+    $item->id = $courseid;
+    $item->name = $coursename;
+    return $item;
+}
+
 
 /**
  * Construct the tree of ungraded items
@@ -219,7 +228,7 @@ function block_grade_me_tree($course) {
             $userfirst = $user->firstname;
             $userfirstlast = $user->firstname . ' ' . $user->lastname;
             $userprofiletitle = get_string('link_user_profile', 'block_grade_me', array('first_name' => $userfirst));
-
+            
             $text .= '<li class="gradable">';  // Open gradable.
             $text .= '<a class="gradable-icon" href="' . $submissionlink . '" title="' . $submissiontitle . '">
                         <i class="fa fa-check" aria-hidden="true"></i>
