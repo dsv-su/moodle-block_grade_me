@@ -49,10 +49,8 @@ class block_grade_me extends block_base {
         // Create the content class.
         $this->content = new stdClass();
         $htmlapp = '<div id="app">{{ message }}</div>';
-        $
         $scriptstart = "<script type='module'>
-        
-        import { createApp, ref } from '/blocks/grade_me/javascript/vue'
+        import { createApp, ref } from '/blocks/grade_me/javascript/vue.esm-browser.js'
 window.onload = (event) => {
   console.log('page is fully loaded');
   createApp({
@@ -64,7 +62,6 @@ window.onload = (event) => {
     }
   }).mount('#app')
 };
-  
 
 </script>";
 
