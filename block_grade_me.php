@@ -65,7 +65,7 @@ window.onload = (event) => {
 
 </script>";
 
-        $this->content->text .= $htmlapp;
+        $this->content->text = $htmlapp;
         $this->content->text .= $scriptstart;
 
         $this->content->footer = '';
